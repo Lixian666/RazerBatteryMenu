@@ -1,0 +1,13 @@
+.build/
+.swiftpm/
+dist/
+DerivedData/
+.DS_Store
+*.dmg
+*.zip
+*.xcuserstate
+xcuserdata/
+.idea/
+.vscode/
+hardware-validation.txt
+test-results.txt
