@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test-and-build:
+    runs-on: macos-14
+    timeout-minutes: 20
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Show toolchain
+        run: swift --version
+
+      - name: Run protocol and state checks
+        run: bash scripts/test.sh
+
+      - name: Build release app
+        run: bash scripts/build.sh
+
+      - name: Verify app signature
+        run: codesign --verify --strict --verbose=2 dist/RazerBatteryMenu.app
+
+      - name: Upload unsigned development app
+        uses: actions/upload-artifact@v4
+        with:
+          name: RazerBatteryMenu-${{ runner.arch }}
+          path: dist/RazerBatteryMenu.app
+          if-no-files-found: error
