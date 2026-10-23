@@ -1,0 +1,56 @@
+name: Device support request
+description: Provide evidence for a new Razer mouse or receiver
+title: "[Device]: "
+labels: [device-support, needs-evidence]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Similar product names do not imply compatible HID protocols. New devices remain detection-only until protocol evidence and safe read/write validation are available.
+
+  - type: input
+    id: model
+    attributes:
+      label: Exact model and regional variant
+    validations:
+      required: true
+
+  - type: input
+    id: connection
+    attributes:
+      label: Connection and VID:PID
+      placeholder: 2.4G receiver, 1532:0000
+    validations:
+      required: true
+
+  - type: input
+    id: environment
+    attributes:
+      label: macOS, Mac architecture, and firmware
+    validations:
+      required: true
+
+  - type: textarea
+    id: diagnostics
+    attributes:
+      label: Sanitized diagnostics
+      description: Use the app's device diagnostics. Remove serial numbers, registry IDs, usernames, and personal paths.
+      render: text
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Protocol or behavior evidence
+      description: Link public protocol sources or describe verified battery, charging, DPI, and polling-rate behavior.
+
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy
+      options:
+        - label: I removed device serial numbers and personal information.
+          required: true
+        - label: I understand this request does not automatically enable write commands for the device.
+          required: true

@@ -1,0 +1,74 @@
+name: Bug report
+description: Report reproducible application or device behavior
+title: "[Bug]: "
+labels: [bug, needs-triage]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a problem. Remove device serial numbers, usernames, personal paths, and unrelated system information before submitting logs.
+
+  - type: input
+    id: version
+    attributes:
+      label: App version or commit
+      placeholder: v0.1.0 or commit SHA
+    validations:
+      required: true
+
+  - type: input
+    id: macos
+    attributes:
+      label: macOS and Mac architecture
+      placeholder: macOS 14.7, Apple Silicon
+    validations:
+      required: true
+
+  - type: input
+    id: device
+    attributes:
+      label: Mouse, connection, and VID:PID
+      placeholder: Basilisk V3 Pro, 2.4G receiver, 1532:00AB
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Include the starting state and the smallest reliable sequence.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: diagnostics
+    attributes:
+      label: Sanitized device diagnostics or crash excerpt
+      description: Do not paste serial numbers, registry IDs, usernames, or full personal paths.
+      render: text
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checklist
+      options:
+        - label: I searched existing issues.
+          required: true
+        - label: I removed private device and account information.
+          required: true
+        - label: I tested after quitting other mouse-management software where applicable.
+          required: true
